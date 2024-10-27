@@ -38,12 +38,7 @@ public class Hedi {
         return model;
     }
 
-    @GetMapping()
-    public String getEquipements(){
 
-
-
-    }
 
 
 }

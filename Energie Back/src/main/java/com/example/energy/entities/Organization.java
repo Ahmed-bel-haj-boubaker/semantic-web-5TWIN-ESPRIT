@@ -1,2 +1,22 @@
-package com.example.energy.entities;public class Organization {
+package com.example.energy.entities;
+
+
+
+
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
+
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class Organization {
+
+
+      String nom;
+
 }
