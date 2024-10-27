@@ -1,0 +1,86 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:j.0="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Class rdf:about="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#Fournisseur"/>
+  <owl:Class rdf:about="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#Equipement"/>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#fournit">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#Equipement"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#Fournisseur"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#capacite">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#Equipement"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#type">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#Equipement"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#nom">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#Fournisseur"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#disponibilite">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#Fournisseur"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#statut">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#Fournisseur"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#type_equipement">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#Fournisseur"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#contact">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#Fournisseur"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <j.0:Fournisseur rdf:about="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#Fournisseur1730063287540">
+    <j.0:type_equipement>r</j.0:type_equipement>
+    <j.0:disponibilite>r</j.0:disponibilite>
+    <j.0:statut>r</j.0:statut>
+    <j.0:contact>r</j.0:contact>
+    <j.0:nom>r</j.0:nom>
+  </j.0:Fournisseur>
+  <j.0:Fournisseur rdf:about="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#Fournisseur1730065162997">
+    <j.0:nom>i</j.0:nom>
+    <j.0:contact>i</j.0:contact>
+    <j.0:statut>no disponible</j.0:statut>
+    <j.0:disponibilite>i</j.0:disponibilite>
+    <j.0:type_equipement>i</j.0:type_equipement>
+  </j.0:Fournisseur>
+  <j.0:Equipement rdf:about="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#Equipement1730066576067">
+    <j.0:type>hedi</j.0:type>
+    <j.0:capacite>20</j.0:capacite>
+  </j.0:Equipement>
+  <j.0:Fournisseur rdf:about="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#Fournisseur1730064805517">
+    <j.0:nom>t</j.0:nom>
+    <j.0:contact>t</j.0:contact>
+    <j.0:statut>actif</j.0:statut>
+    <j.0:disponibilite>t</j.0:disponibilite>
+    <j.0:type_equipement>t</j.0:type_equipement>
+  </j.0:Fournisseur>
+  <j.0:Equipement rdf:about="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#Equipement1730063250870">
+    <j.0:type>a</j.0:type>
+    <j.0:capacite>10</j.0:capacite>
+  </j.0:Equipement>
+  <j.0:Fournisseur rdf:about="http://www.semanticweb.org/hedi/ontologies/2024/9/untitled-ontology-10#Fournisseur1730065062247">
+    <j.0:nom>ab</j.0:nom>
+    <j.0:contact>ab</j.0:contact>
+    <j.0:statut>actif</j.0:statut>
+    <j.0:disponibilite>ab</j.0:disponibilite>
+    <j.0:type_equipement>ab</j.0:type_equipement>
+  </j.0:Fournisseur>
+</rdf:RDF>
