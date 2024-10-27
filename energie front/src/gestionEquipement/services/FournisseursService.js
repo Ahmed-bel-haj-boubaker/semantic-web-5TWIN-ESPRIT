@@ -8,7 +8,9 @@ const fetchFournisseur  = async () => {
 }
 export const deleteFournisseur = async (id) => {
     try {
-      await axios.delete(API_URL+`/fournisseur?URI=${id}`);
+      await axios.delete(API_URL+"/fournisseur", {
+        params: { URI:id }
+      });
     } catch (error) {
       throw new Error('Error deleting fournisseur');
     }
