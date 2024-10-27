@@ -193,7 +193,7 @@ public class Hedi {
     }
 
 
-    @DeleteMapping()
+    @DeleteMapping("/equipement")
     public ResponseEntity<String> deleteEquipement(@RequestParam ("URI") String EqURI) {
 
         // Create an OntModel that performs inference

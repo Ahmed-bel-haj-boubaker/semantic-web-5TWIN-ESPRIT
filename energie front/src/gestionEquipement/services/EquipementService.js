@@ -9,7 +9,10 @@ const fetchEquipements  = async () => {
 
 export const deleteEquipement = async (id) => {
     try {
-      await axios.delete(API_URL+`?URI=${id}`);
+      console.log(id)
+      await axios.delete(API_URL+"/equipement", {
+        params: { URI:id }
+      });
     } catch (error) {
       throw new Error('Error deleting equipment');
     }
