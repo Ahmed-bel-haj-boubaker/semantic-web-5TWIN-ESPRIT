@@ -269,4 +269,7 @@ public class Hedi {
 
         return j.getJSONObject("results").getJSONArray("bindings").toString();
 
+    }
+
+
 }
