@@ -2,6 +2,7 @@ package com.example.energy.controllers;
 
 import com.example.energy.entities.Organization;
 
+import com.example.energy.entities.OrganizationG;
 import com.example.energy.entities.OrganizationRequest;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Model;
@@ -46,6 +47,7 @@ public class OrganizationController {
 
 
     @GetMapping("/organizations")
+
     public String getOrganizations() {
         String sparqlQuery = "PREFIX ns: <" + NS + "> "
                 + "SELECT ?nom WHERE { ?org ns:nom ?nom }";
@@ -57,14 +59,19 @@ public class OrganizationController {
 
             while (results.hasNext()) {
                 QuerySolution soln = results.nextSolution();
-                String nom = soln.getLiteral("nom").getString();
-
-                Organization org = new Organization(nom);
-                organizations.add(org);
+                if (soln.getLiteral("nom") != null) {
+                    String nom = soln.getLiteral("nom").getString();
+                    Organization org = new Organization(nom);
+                    organizations.add(org);
+                } else {
+                    System.out.println("Found null for 'nom'");
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        // Convert the list to JSON
+        // Convert organizations to JSON Array
         JSONArray jsonArray = new JSONArray();
         for (Organization org : organizations) {
             JSONObject jsonObj = new JSONObject();
@@ -74,6 +81,8 @@ public class OrganizationController {
 
         return jsonArray.toString();
     }
+
+
     @PostMapping("/add")
     public String addOrganization(@RequestBody Organization organization) {
         // Generate a unique URI for the new organization
@@ -212,6 +221,97 @@ public class OrganizationController {
             response.put("exists", false);
         }
         return response.toString();
+    }
+
+
+    @GetMapping("/legalizations")
+    public List<Organization> getOrganizationsWithLegalization() {
+        List<Organization> organizations = new ArrayList<>();
+
+
+        String sparqlQuery = "PREFIX ns: <" + NS + ">\n" +
+                "SELECT ?orgName ?legalization\n" +
+                "WHERE { \n" +
+                "  ?organization a ns:Organization ;\n" +
+                "                ns:nom ?orgName ;\n" +
+                "                ns:hasLegalization ?legalizationResource .\n" +
+                "  ?legalizationResource a ns:OrganizationG ;\n" +
+                "                         ns:legalisationApplicable ?legalization .\n" +
+                "}";
+
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(sparqlQuery, model)) {
+            ResultSet results = qexec.execSelect();
+
+
+            while (results.hasNext()) {
+                QuerySolution solution = results.nextSolution();
+                String orgName = solution.getLiteral("orgName").getString();
+                String legalization = solution.getLiteral("legalization").getString();
+
+                // Create Organization and OrganizationG objects
+                OrganizationG organizationG = new OrganizationG(legalization);
+                Organization organization = new Organization(orgName, organizationG);
+
+                organizations.add(organization);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return organizations;
+    }
+
+    @PostMapping("/associate/{orgNom}")
+    public String associateOrganizationWithLegalization(@PathVariable("orgNom") String orgNom, @RequestBody OrganizationG organizationG) {
+        // Define properties
+        Property hasLegalizationProperty = model.createProperty(NS, "hasLegalization");
+        Property legalisationApplicableProperty = model.createProperty(NS, "legalisationApplicable");
+
+        // Find the organization resource by the provided name
+        String sparqlQuery = "PREFIX ns: <" + NS + "> "
+                + "SELECT ?org WHERE { ?org ns:nom \"" + orgNom + "\" }";
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(sparqlQuery, model)) {
+            ResultSet results = qexec.execSelect();
+
+            if (results.hasNext()) {
+                QuerySolution soln = results.nextSolution();
+                Resource orgResource = soln.getResource("org");
+
+                // Create a new Resource for OrganizationG
+                String newOrgGUri = NS + "OrganizationG_" + UUID.randomUUID();
+                Resource orgGResource = model.createResource(newOrgGUri)
+                        .addProperty(legalisationApplicableProperty, organizationG.getLegalisationApplicable());
+
+                // Associate Organization with OrganizationG
+                orgResource.addProperty(hasLegalizationProperty, orgGResource);
+
+                // Optionally, if you want to also create a legalisationApplicable property on the orgResource
+                orgResource.addProperty(legalisationApplicableProperty, organizationG.getLegalisationApplicable());
+
+                // Persist changes to the RDF file
+                try (FileOutputStream out = new FileOutputStream(RDF_FILE)) {
+                    model.write(out, "RDF/XML");
+                } catch (Exception e) {
+                    JSONObject errorResponse = new JSONObject();
+                    errorResponse.put("message", "Failed to save the RDF model");
+                    errorResponse.put("error", e.getMessage());
+                    return errorResponse.toString();
+                }
+
+                // Return success response
+                JSONObject response = new JSONObject();
+                response.put("message", "Organization associated with legalization successfully");
+                response.put("organization", orgNom);
+                response.put("organizationGUri", newOrgGUri);
+                return response.toString();
+            } else {
+                JSONObject response = new JSONObject();
+                response.put("message", "Organization not found");
+                return response.toString();
+            }
+        }
     }
 
 }
