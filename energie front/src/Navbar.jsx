@@ -12,6 +12,8 @@ function Navbar() {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+  const [isEmplacementDropdownOpen, setIsEmplacementDropdownOpen] =
+    useState(false); // State for Emplacement dropdown
 
   return (
     <nav className="bg-gradient-to-r from-indigo-500 to-blue-600 shadow-lg">
@@ -46,6 +48,28 @@ function Navbar() {
         </button>
 
         <div className="hidden lg:flex space-x-8">
+          <div
+            onMouseEnter={() => setIsEmplacementDropdownOpen(true)}
+            onClick={() => setIsEmplacementDropdownOpen(false)}
+            className="relative"
+          >
+            <Link
+              className="text-white hover:text-yellow-300 transition-colors duration-300 font-medium text-lg"
+              to="/emplacement"
+            >
+              Emplacement
+            </Link>
+            {isEmplacementDropdownOpen && (
+              <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg z-10">
+                <Link
+                  className="block px-4 py-2 text-gray-700 hover:bg-indigo-100 transition-colors duration-200"
+                  to="/emplacement/add"
+                >
+                  Add Emplacement
+                </Link>
+              </div>
+            )}
+          </div>
           {/* Equipements with Dropdown */}
           <div
             onMouseEnter={() => setIsEquipementsDropdownOpen(true)}

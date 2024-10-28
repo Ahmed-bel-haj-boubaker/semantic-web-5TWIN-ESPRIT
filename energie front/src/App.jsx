@@ -9,6 +9,9 @@ import FournisseurList from "./gestionEquipement/FournisseurList";
 import Navbar from "./Navbar";
 import ListOrganization from "./gestionOrganization/ListOrganization";
 import AddOrganization from "./gestionOrganization/AddOrganization";
+import ListEmplacement from "./gestionEmplacement/ListEmplacement";
+import AddEmplacement from "./gestionEmplacement/AddEmplacement";
+import UpdateEmplacement from "./gestionEmplacement/UpdateEmplacement";
 
 function App() {
   return (
@@ -22,7 +25,12 @@ function App() {
           <Route path="/fournisseurs/add" element={<AddFournisseur />} />
           <Route path="/organization" element={<ListOrganization />} />
           <Route path="/organization/add" element={<AddOrganization />} />
-
+          <Route path="/emplacement" element={<ListEmplacement />} />
+          <Route path="/emplacement/add" element={<AddEmplacement />} />
+          <Route
+            path="/emplacement/update/:conditionsEnvironnementales"
+            element={<UpdateEmplacement />}
+          />
         </Routes>
       </div>
     </Router>
