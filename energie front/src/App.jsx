@@ -12,6 +12,8 @@ import AddOrganization from "./gestionOrganization/AddOrganization";
 import ListEmplacement from "./gestionEmplacement/ListEmplacement";
 import AddEmplacement from "./gestionEmplacement/AddEmplacement";
 import UpdateEmplacement from "./gestionEmplacement/UpdateEmplacement";
+import ListProjects from "./gestionProjet/ListProjet"; 
+import ListeFinancement from "./gestionFinancement/ListFinancement";
 
 function App() {
   return (
@@ -31,6 +33,9 @@ function App() {
             path="/emplacement/update/:conditionsEnvironnementales"
             element={<UpdateEmplacement />}
           />
+          <Route path="/projects" element={<ListProjects />} />
+          <Route path="/financements" element={<ListeFinancement />} />
+
         </Routes>
       </div>
     </Router>

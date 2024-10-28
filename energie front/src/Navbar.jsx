@@ -8,12 +8,12 @@ function Navbar() {
   const [isorgDropdownOpen, setisorgDropdownOpen] = useState(false);
   const [isFournisseursDropdownOpen, setIsFournisseursDropdownOpen] =
     useState(false);
+  const [isEmplacementDropdownOpen, setIsEmplacementDropdownOpen] =
+    useState(false); // State for Emplacement dropdown
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-  const [isEmplacementDropdownOpen, setIsEmplacementDropdownOpen] =
-    useState(false); // State for Emplacement dropdown
 
   return (
     <nav className="bg-gradient-to-r from-indigo-500 to-blue-600 shadow-lg">
@@ -142,6 +142,20 @@ function Navbar() {
               </div>
             )}
           </div>
+
+          {/* New List Projects Link */}
+          <Link
+            className="text-white hover:text-yellow-300 transition-colors duration-300 font-medium text-lg"
+            to="/projects"
+          >
+            List Projects
+          </Link>
+          <Link
+            className="text-white hover:text-yellow-300 transition-colors duration-300 font-medium text-lg"
+            to="/financements"
+          >
+            List Financements
+          </Link>
         </div>
       </div>
 
@@ -186,6 +200,23 @@ function Navbar() {
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Add Fournisseur
+          </Link>
+
+          {/* New List Projects Link in Mobile Menu */}
+          <Link
+            className="block text-white hover:text-yellow-300 transition-colors duration-300 font-medium text-lg py-2"
+            to="/projects"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            List Projects
+          </Link>
+
+          <Link
+            className="block text-white hover:text-yellow-300 transition-colors duration-300 font-medium text-lg py-2"
+            to="/financements"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            List Financements
           </Link>
         </div>
       </div>
