@@ -19,10 +19,8 @@ export const deleteEquipement = async (id) => {
   };
   
 
-const addEquipment = async (equipementData) => { // Change here to 'addEquipment'
+const addEquipment = async (equipementData) => {  
   const response = await axios.post(API_URL, equipementData);
   return response.data;
 }
-
-// Export with consistent naming
-export { fetchEquipements, addEquipment  };
+ export { fetchEquipements, addEquipment  };
