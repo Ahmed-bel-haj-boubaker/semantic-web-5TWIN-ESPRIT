@@ -31,6 +31,27 @@ public class JenaEngine {
         return model;
     }
 
+   static public Model readInferencedModelFromRuleFile(Model model, String inputRuleFile) {
+        InputStream in = FileManager.get().open(inputRuleFile);
+        if (in == null) {
+            System.out.println("Rule File: " + inputRuleFile + " not found");
+            return null;
+        } else {
+            try {
+                in.close();
+            } catch (IOException e) {
+// TODO Auto-generated catch block
+                return null;
+            }
+        }
+        List rules = Rule.rulesFromURL(inputRuleFile);
+        GenericRuleReasoner reasoner = new GenericRuleReasoner(rules);
+        reasoner.setDerivationLogging(true);
+        reasoner.setOWLTranslation(true); // not needed in RDFS case
+        reasoner.setTransitiveClosureCaching(true);
+        InfModel inf = ModelFactory.createInfModel(reasoner, model);
+        return inf;
+    }
     public static Model applyInferenceRules(Model model, String ruleFilePath) {
         try (InputStream in = FileManager.get().open(ruleFilePath)) {
             List<Rule> rules = Rule.rulesFromURL(ruleFilePath);

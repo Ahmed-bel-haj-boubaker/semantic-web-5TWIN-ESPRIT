@@ -2663,4 +2663,38 @@
     <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   </rdfs:Resource>
+    <owl:Class rdf:about="http://www.semanticweb.org/saidg/ontologies/2024/8/untitled-ontology-8#TechnologieÉnergétique">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Technologie Énergétique</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Représente les différentes technologies utilisées pour produire de l'énergie renouvelable.</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/saidg/ontologies/2024/8/untitled-ontology-8#utiliseFinancement">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/saidg/ontologies/2024/8/untitled-ontology-8#TechnologieÉnergétique"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/saidg/ontologies/2024/8/untitled-ontology-8#Financement"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">utilise Financement</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    </owl:ObjectProperty>
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/saidg/ontologies/2024/8/untitled-ontology-8#nomTechnologie">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/saidg/ontologies/2024/8/untitled-ontology-8#TechnologieÉnergétique"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">nom Technologie</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/saidg/ontologies/2024/8/untitled-ontology-8#efficacite">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/saidg/ontologies/2024/8/untitled-ontology-8#TechnologieÉnergétique"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Efficacité</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    </owl:DatatypeProperty>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/saidg/ontologies/2024/8/untitled-ontology-8#PanneauxSolaires">
+        <rdf:type rdf:resource="http://www.semanticweb.org/saidg/ontologies/2024/8/untitled-ontology-8#TechnologieÉnergétique"/>
+        <nomTechnologie rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Panneaux Solaires</nomTechnologie>
+        <efficacite rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">18.5</efficacite>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/saidg/ontologies/2024/8/untitled-ontology-8#Eoliennes">
+        <rdf:type rdf:resource="http://www.semanticweb.org/saidg/ontologies/2024/8/untitled-ontology-8#TechnologieÉnergétique"/>
+        <nomTechnologie rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Éoliennes</nomTechnologie>
+        <efficacite rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">35.0</efficacite>
+    </owl:NamedIndividual>
+
 </rdf:RDF>
